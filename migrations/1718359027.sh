@@ -21,7 +21,7 @@ fi
 mkdir -p ~/.config/nvim/plugin/after
 cp $OMAKUB_PATH/configs/neovim/transparency.lua ~/.config/nvim/plugin/after/
 sed -i 's/checker = { enabled = true }/checker = { enabled = true, notify = false }/g' ~/.config/nvim/lua/config/lazy.lua
-source ~/.local/share/omakub/applications/Neovim.sh
+source $OMAKUZ_LOCAL/applications/Neovim.sh
 
 # New font size setup
 cp $OMAKUB_PATH/configs/alacritty/font-size.toml ~/.config/alacritty/

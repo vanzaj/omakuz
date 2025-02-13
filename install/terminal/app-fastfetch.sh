@@ -7,5 +7,5 @@ sudo apt install -y fastfetch
 if [ ! -f "$HOME/.config/fastfetch/config.jsonc" ]; then
   # Use Omakub fastfetch config
   mkdir -p ~/.config/fastfetch
-  cp ~/.local/share/omakub/configs/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
+  cp $OMAKUZ_LOCAL/configs/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
 fi

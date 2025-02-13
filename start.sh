@@ -9,14 +9,16 @@ sudo apt update >/dev/null
 sudo apt install -y git >/dev/null
 
 echo "Cloning Omakub..."
-local_omakuz='~/.local/share/omakuz'
-rm -rf $local_omakuz 
+
+export OMAKUZ_LOCAL='~/.local/share/omakuz'
+
+rm -rf $OMAKUZ_LOCAL 
 git clone https://github.com/vanzaj/omakuz.git $local_omakuz > /dev/null
-if [[ $OMAKUZ_REF != "master" ]]; then
-	cd $local_omakuz
-	git fetch origin "${OMAKUZ_REF:-stable}" && git checkout "${OMAKUZ_REF:-stable}"
+if [[ $OMAKUZ_BRANCH != "main" ]]; then
+	cd $OMAKUZ_LOCAL
+	git fetch origin "${OMAKUZ_BRANCH:-stable}" && git checkout "${OMAKUZ_BRANCH:-stable}"
 	cd -
 fi
 
 echo "Installation starting..."
-source $local_omakuz/install.sh
+source $OMAKUZ_LOCAL/install.sh

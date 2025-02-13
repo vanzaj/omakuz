@@ -1,1 +1,1 @@
-$include ~/.local/share/omakub/defaults/bash/inputrc
+$include $OMAKUZ_LOCAL/defaults/bash/inputrc

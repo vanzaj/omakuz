@@ -1,34 +1,24 @@
-# Exit immediately if a command exits with a non-zero status
-set -e
+set -euo pipefail
 
-# Desktop software and tweaks will only be installed if we're running Gnome
-RUNNING_GNOME=$([[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]] && echo true || echo false)
+source ./helpers.sh
 
-# Check the distribution name and version and abort if incompatible
-source ~/.local/share/omakub/install/check-version.sh
+source_if_readable $OMAKUZ_LOCAL/install/check-version.sh
 
 if $RUNNING_GNOME; then
-  # Ensure computer doesn't go to sleep or lock while installing
-  gsettings set org.gnome.desktop.screensaver lock-enabled false
-  gsettings set org.gnome.desktop.session idle-delay 0
+  gnome_screen_lock_enable false 0 # Ensure computer doesn't go to sleep or lock while installing
 
   echo "Get ready to make a few choices..."
-  source ~/.local/share/omakub/install/terminal/required/app-gum.sh >/dev/null
-  source ~/.local/share/omakub/install/first-run-choices.sh
+  source $OMAKUZ_LOCAL/install/terminal/required/app-gum.sh > /dev/null
+  source $OMAKUZ_LOCAL/install/first-run-choices.sh
 
   echo "Installing terminal and desktop tools..."
 else
   echo "Only installing terminal tools..."
 fi
 
-# Install terminal tools
-source ~/.local/share/omakub/install/terminal.sh
+source $OMAKUZ_LOCAL/install/terminal.sh
 
 if $RUNNING_GNOME; then
-  # Install desktop tools and tweaks
-  source ~/.local/share/omakub/install/desktop.sh
-
-  # Revert to normal idle and lock settings
-  gsettings set org.gnome.desktop.screensaver lock-enabled true
-  gsettings set org.gnome.desktop.session idle-delay 300
+  source $OMAKUZ_LOCAL/install/desktop.sh
+  gnome_screen_lock_enable  # Revert to normal idle and lock settings
 fi
