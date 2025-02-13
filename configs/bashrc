@@ -1,5 +1,4 @@
 source $OMAKUZ_LOCAL/defaults/bash/rc
 
-# Editor used by CLI
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
