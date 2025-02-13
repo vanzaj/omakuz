@@ -1,4 +1,4 @@
-ascii_art='
+figlet='
                                                                   
                                     _|                            
   _|_|    _|_|_|  _|_|      _|_|_|  _|  _|    _|    _|  _|_|_|_|  
@@ -19,7 +19,7 @@ colors=(
 )
 
 # Split the ASCII art into lines
-IFS=$'\n' read -rd '' -a lines <<<"$ascii_art"
+IFS=$'\n' read -rd '' -a lines <<< "$figlet"
 
 # Print each line with the corresponding color
 for i in "${!lines[@]}"; do
