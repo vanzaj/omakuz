@@ -21,31 +21,28 @@ sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/
 echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list >/dev/null
 rm -f packages.microsoft.gpg
 cd -
-
 sudo apt update
 sudo apt install -y code
-
 mkdir -p ~/.config/Code/User
 cp $OMAKUZ_LOCAL/configs/vscode.json ~/.config/Code/User/settings.json
 code --install-extension enkia.tokyo-night
+
+# Cursor
 
 # IntelliJ
 sudo snap install intellij-idea-community --classic
 
 # Fonts
 mkdir -p ~/.local/share/fonts
-
 cd /tmp
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip
 unzip CascadiaMono.zip -d CascadiaFont
 cp CascadiaFont/*.ttf ~/.local/share/fonts
 rm -rf CascadiaMono.zip CascadiaFont
-
 wget -O iafonts.zip https://github.com/iaolo/iA-Fonts/archive/refs/heads/master.zip
 unzip iafonts.zip -d iaFonts
 cp iaFonts/iA-Fonts-master/iA\ Writer\ Mono/Static/iAWriterMonoS-*.ttf ~/.local/share/fonts
 rm -rf iafonts.zip iaFonts
-
 fc-cache
 cd -
 

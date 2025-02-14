@@ -26,7 +26,7 @@ sudo apt install -y git >/dev/null
 
 echo "Cloning OmakuZ..."
 
-export OMAKUZ_LOCAL='~/.local/share/omakuz'
+export OMAKUZ_LOCAL="${HOME}/.local/share/omakuz"
 rm -rf $OMAKUZ_LOCAL 
 git clone https://github.com/vanzaj/omakuz.git $OMAKUZ_LOCAL > /dev/null
 
