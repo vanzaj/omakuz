@@ -21,6 +21,15 @@ sudo apt install -y \
   redis-tools sqlite3 libsqlite3-0 libmysqlclient-dev libpq-dev postgresql-client postgresql-client-common
 # ------------
 
+# Gum
+cd /tmp
+GUM_VERSION="0.15.2" # Use known good version
+wget -qO gum.deb "https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/gum_${GUM_VERSION}_amd64.deb"
+sudo apt-get install -y ./gum.deb
+rm gum.deb
+cd -
+# ------------
+
 # GitHub CLI
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
 	sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
