@@ -11,9 +11,10 @@ sudo apt install -y git >/dev/null
 echo "Cloning Omakub..."
 
 export OMAKUZ_LOCAL='~/.local/share/omakuz'
+export OMAKUZ_BRANCH='main'
 
 rm -rf $OMAKUZ_LOCAL 
-git clone https://github.com/vanzaj/omakuz.git $local_omakuz > /dev/null
+git clone https://github.com/vanzaj/omakuz.git $OMAKUZ_LOCAL > /dev/null
 if [[ $OMAKUZ_BRANCH != "main" ]]; then
 	cd $OMAKUZ_LOCAL
 	git fetch origin "${OMAKUZ_BRANCH:-stable}" && git checkout "${OMAKUZ_BRANCH:-stable}"
