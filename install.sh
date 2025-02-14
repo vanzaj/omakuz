@@ -1,24 +1,17 @@
-set -euo pipefail
+#/usr/bin/env bash
+set -euxo pipefail
 
-source ./helpers.sh
+. ./helpers.sh
 
-source_if_readable $OMAKUZ_LOCAL/install/check-version.sh
+echo "Installing terminal tools..."
+. $OMAKUZ_LOCAL/install/terminal.sh
 
+echo "Installing desktop tools..."
 if $RUNNING_GNOME; then
   gnome_screen_lock_enable false 0 # disable screen lock while installing
-
   echo "Get ready to make a few choices..."
-  source $OMAKUZ_LOCAL/install/terminal/required/app-gum.sh > /dev/null
-  source $OMAKUZ_LOCAL/install/first-run-choices.sh
-
-  echo "Installing terminal and desktop tools..."
-else
-  echo "Only installing terminal tools..."
-fi
-
-source $OMAKUZ_LOCAL/install/terminal.sh
-
-if $RUNNING_GNOME; then
-  source $OMAKUZ_LOCAL/install/desktop.sh
+  . $OMAKUZ_LOCAL/install/terminal/required/app-gum.sh > /dev/null
+  . $OMAKUZ_LOCAL/install/first-run-choices.sh
+  . $OMAKUZ_LOCAL/install/desktop.sh
   gnome_screen_lock_enable  # Revert to default screen lock
 fi
