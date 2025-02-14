@@ -1,5 +1,3 @@
-for installer in $OMAKUZ_LOCAL/install/desktop/*.sh; do source $installer; done
-
 # Alacritty is a GPU-powered and highly extensible terminal. See https://alacritty.org/
 sudo apt install -y alacritty
 mkdir -p ~/.config/alacritty
@@ -31,6 +29,8 @@ mkdir -p ~/.config/Code/User
 cp $OMAKUZ_LOCAL/configs/vscode.json ~/.config/Code/User/settings.json
 code --install-extension enkia.tokyo-night
 
+# IntelliJ
+sudo snap install intellij-idea-community --classic
 
 # Fonts
 mkdir -p ~/.local/share/fonts

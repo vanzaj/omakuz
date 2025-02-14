@@ -22,3 +22,5 @@ if $RUNNING_GNOME; then
   . $OMAKUZ_LOCAL/install/desktop.sh
   gnome_screen_lock_enable  # Revert to default screen lock
 fi
+
+sudo apt autoremove
