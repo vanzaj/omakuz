@@ -1,3 +1,4 @@
+export OMAKUZ_LOCAL="${HOME}/.local/share/omakuz"
 source $OMAKUZ_LOCAL/defaults/bash/rc
 
 export EDITOR="vim"
